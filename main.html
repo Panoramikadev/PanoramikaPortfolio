@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <!-- Ваши стили могут быть добавлены здесь -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            
+        }
+
+        header {
+            background-color: #dbd80d;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            position: fixed;
+            text-align: center;
+            z-index: 1;
+        }
+
+        main {
+            padding: 0px;
+        }
+
+        section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #333;
+        }
+
+        .next-btn {
+            margin-top: auto;
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-decoration: none;
+            cursor: pointer;
+            margin-bottom: 50px;
+        }
+        
+
+
+        footer {
+            background-color: #dbd80d;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+
+<!-- Скрипт для прокрутки к следующей секции -->
+<script src="js/Next.js"></script>
+
+</head>
+<body>
+
+    <!-- Хедер -->
+    <header>
+        <!-- Дополнительное содержимое хедера, такое как навигация, может быть добавлено здесь -->
+        <nav>
+            <button>Home</button>
+            <button>Portfolio</button>
+            <button>About</button>
+            <button>Contacts</button>
+        </nav>
+    </header>
+
+    <!-- Основная часть страницы -->
+    <main>
+
+        <!-- Дополнительное содержимое основной части страницы -->
+        <section id="home" style="background-color: #333;">
+            <h2>Section 1</h2>
+            <p>Content for Section 1 goes here.</p>
+            <button class="next-btn" data-next-section="portfolio">Next</button>
+        </section>
+
+        <!-- Раздел 2 -->
+        <section id="portfolio" style="background-color: #333;">
+            <h2>Section 2</h2>
+            <p>Content for Section 2 goes here.</p>
+            <button class="next-btn" data-next-section="about">Next</button>
+        </section>
+
+        <!-- Раздел 3 -->
+        <section id="about" style="background-color: #333;">
+            <h2>Section 3</h2>
+            <p>Content for Section 3 goes here.</p>
+            <button class="next-btn" data-next-section="contacts">Next</button>
+        </section>
+    </main>
+
+    <!-- Футер -->
+    <footer id="contacts">
+        <p>&copy; 2023 Your Website</p>
+        <!-- Дополнительное содержимое футера, такое как ссылки или копирайт, может быть добавлено здесь -->
+    </footer>
+    <script src="js/Next.js"></script>
+
+</body>
+</html>
