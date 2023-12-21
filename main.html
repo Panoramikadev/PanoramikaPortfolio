@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,17 +11,42 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            
+            overflow-x: hidden; /* Добавлено для устранения горизонтального скролла */
         }
 
         header {
-            background-color: #dbd80d;
+            background-color: rgba(184, 182, 38, 0.110);
             color: white;
-            padding: 10px;
+            padding: 35px;
             width: 100%;
             position: fixed;
             text-align: center;
             z-index: 1;
+            backdrop-filter: blur(8px); /* Размытие в пикселях */
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow: 0px 5px 10px rgba(184, 182, 38, 0.072);
+        }
+
+        header button {
+            color: rgba(184, 182, 38, 0.993);
+            background-color: rgba(184, 182, 38, 0.877);
+            margin: 0 50px 0 0;
+            background-color: transparent;
+            border: none;
+            font-size: 15px;
+            transition: color 1s ease, background-color 1s ease; /* Анимация изменения цвета и фона в течение 0.3 секунд */
+            border-radius: 10px;
+        }
+
+        header button:hover {
+            color: rgb(253, 217, 10);
+            background-color: rgba(184, 182, 38, 0.158);
+            backdrop-filter: blur(20px); /* Размытие в пикселях */
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow: 0 0 25px rgba(184, 182, 38, 0.89); /* Увеличение свечения */
+            border: 0px solid rgba(184, 182, 38, 0.8);
+            transform: scale(1.2);
+            transition: color 0.5s ease, background-color 0.5s ease;
         }
 
         main {
@@ -33,7 +59,23 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: #333;
+        }
+
+        
+        #portfolio {
+            background-color: #000000;
+            color: white; /* добавим белый текст для контраста */
+        }
+
+        #about {
+            background-color: #000000;
+            color: white; /* добавим белый текст для контраста */
+        }
+
+        #contacts {
+            background-color: rgb(253, 217, 10);
+            color: white; /* добавим белый текст для контраста */
+            height: auto; /* изменено на auto */
         }
 
         .next-btn {
@@ -46,8 +88,27 @@
             cursor: pointer;
             margin-bottom: 50px;
         }
-        
 
+        .parent-container {
+            margin-right: 1100px;
+            margin-top: 255px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            max-width: 500px; /* Максимальная ширина родительского блока */
+      
+        }
+ 
+        .child-block {
+           width: 180px; /* Установите ширину блока по вашему усмотрению */
+           height: 180px;
+           margin: 20px; /* Регулируйте отступы по вашему усмотрению */
+           background-color: rgb(253, 217, 10);
+           backdrop-filter: blur(8px); /* Размытие в пикселях */
+            -webkit-backdrop-filter: blur(8px);
+            border-radius:30px;
+        }
 
         footer {
             background-color: #dbd80d;
@@ -57,22 +118,34 @@
             bottom: 0;
             width: 100%;
         }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
     </style>
 
-<!-- Скрипт для прокрутки к следующей секции -->
-<script src="js/Next.js"></script>
-
+    <!-- Скрипт для прокрутки к следующей секции -->
+    <script src="js/Next.js"></script>
+    <script src="js/Headerbtn.js"></script>
+    <script src="js/debug.js"></script>
 </head>
+
 <body>
 
     <!-- Хедер -->
     <header>
         <!-- Дополнительное содержимое хедера, такое как навигация, может быть добавлено здесь -->
         <nav>
-            <button>Home</button>
-            <button>Portfolio</button>
-            <button>About</button>
-            <button>Contacts</button>
+            <button id="home-btn" class="home-btn" next-section="home">HOME</button>
+            <button id="portfolio-btn" class="portfolio-btn" next-section="portfolio">PORTFOLIO</button>
+            <button id="about-btn" class="about-btn" next-section="about">ABOUT</button>
+            <button id="contacts-btn" class="contacts-btn" next-section="contacts">CONTACTS</button>
         </nav>
     </header>
 
@@ -80,33 +153,37 @@
     <main>
 
         <!-- Дополнительное содержимое основной части страницы -->
-        <section id="home" style="background-color: #333;">
-            <h2>Section 1</h2>
-            <p>Content for Section 1 goes here.</p>
+        <section id="home">
+            <video autoplay muted loop>
+                <source src="content/VideoLo.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
             <button class="next-btn" data-next-section="portfolio">Next</button>
         </section>
 
         <!-- Раздел 2 -->
-        <section id="portfolio" style="background-color: #333;">
-            <h2>Section 2</h2>
-            <p>Content for Section 2 goes here.</p>
+        <section id="portfolio">
+            <div class="parent-container">
+                <div class="child-block"></div>
+                <div class="child-block"></div>
+                <div class="child-block"></div>
+                <div class="child-block"></div>
+              </div>
             <button class="next-btn" data-next-section="about">Next</button>
         </section>
 
         <!-- Раздел 3 -->
-        <section id="about" style="background-color: #333;">
-            <h2>Section 3</h2>
-            <p>Content for Section 3 goes here.</p>
+        <section id="about">
             <button class="next-btn" data-next-section="contacts">Next</button>
+        </section>
+
+        <!-- Раздел 4 -->
+        <section id="contacts">
+            <p>&copy; 2023 Your Website</p>
+            <!-- Дополнительное содержимое футера, такое как ссылки или копирайт, может быть добавлено здесь -->
         </section>
     </main>
 
-    <!-- Футер -->
-    <footer id="contacts">
-        <p>&copy; 2023 Your Website</p>
-        <!-- Дополнительное содержимое футера, такое как ссылки или копирайт, может быть добавлено здесь -->
-    </footer>
-    <script src="js/Next.js"></script>
-
 </body>
+
 </html>
