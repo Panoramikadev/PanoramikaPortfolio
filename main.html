@@ -5,13 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Website</title>
-    <!-- Ваши стили могут быть добавлены здесь -->
+
+    <!-- Подключение шрифта с использованием @font-face -->
     <style>
+        @font-face {
+            font-family: 'Roboto Condensed';
+            font-style: normal;
+            font-weight: 100;
+            src: local('Roboto Condensed Thin'), local('RobotoCondensed-Thin'), url('./content/RobotoCondensed-Thin.ttf') format('truetype');
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto Condensed', sans-serif;
             margin: 0;
             padding: 0;
-            overflow-x: hidden; /* Добавлено для устранения горизонтального скролла */
+            overflow-x: hidden;
         }
 
         header {
@@ -22,28 +30,30 @@
             position: fixed;
             text-align: center;
             z-index: 1;
-            backdrop-filter: blur(8px); /* Размытие в пикселях */
+            backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             box-shadow: 0px 5px 10px rgba(184, 182, 38, 0.072);
         }
 
         header button {
-            color: rgba(184, 182, 38, 0.993);
+            font-family: 'Roboto Condensed', sans-serif; /* Добавили inline стиль */
+            color: rgb(253, 217, 10);
             background-color: rgba(184, 182, 38, 0.877);
             margin: 0 50px 0 0;
             background-color: transparent;
             border: none;
             font-size: 15px;
-            transition: color 1s ease, background-color 1s ease; /* Анимация изменения цвета и фона в течение 0.3 секунд */
+            transition: color 1s ease, background-color 1s ease;
             border-radius: 10px;
         }
 
         header button:hover {
+            font-weight: bold;
             color: rgb(253, 217, 10);
             background-color: rgba(184, 182, 38, 0.158);
-            backdrop-filter: blur(20px); /* Размытие в пикселях */
+            backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(8px);
-            box-shadow: 0 0 25px rgba(184, 182, 38, 0.89); /* Увеличение свечения */
+            box-shadow: 0 0 25px rgba(184, 182, 38, 0.89);
             border: 0px solid rgba(184, 182, 38, 0.8);
             transform: scale(1.2);
             transition: color 0.5s ease, background-color 0.5s ease;
@@ -61,32 +71,51 @@
             align-items: center;
         }
 
-        
-        #portfolio {
-            background-color: #000000;
-            color: white; /* добавим белый текст для контраста */
-        }
-
+        #portfolio,
         #about {
             background-color: #000000;
-            color: white; /* добавим белый текст для контраста */
+            color: white;
         }
 
         #contacts {
             background-color: rgb(253, 217, 10);
-            color: white; /* добавим белый текст для контраста */
-            height: auto; /* изменено на auto */
+            color: white;
+            height: auto;
+        }
+
+        .nav-btn {
+            font-family: 'Roboto Condensed', sans-serif; /* Добавили inline стиль */
+            color: rgb(253, 217, 10);
+            background-color: rgba(184, 182, 38, 0.877);
+            margin: 0 50px 0 0;
+            background-color: transparent;
+            border: none;
+            font-size: 15px;
+            transition: color 1s ease, background-color 1s ease;
+            border-radius: 10px;
+        }
+
+        .nav-btn:hover {
+            color: rgb(253, 217, 10);
+            background-color: rgba(184, 182, 38, 0.158);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow: 0 0 25px rgba(184, 182, 38, 0.89);
+            border: 0px solid rgba(184, 182, 38, 0.8);
+            transform: scale(1.2);
+            transition: color 0.5s ease, background-color 0.5s ease;
         }
 
         .next-btn {
+            background-color: transparent;
             margin-top: auto;
-            background-color: #555;
-            color: white;
+            color: rgba(253, 217, 10, 0.623);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border: none;
-            padding: 10px 20px;
-            text-decoration: none;
+            font-size: 20px;
             cursor: pointer;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
         .parent-container {
@@ -96,18 +125,17 @@
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            max-width: 500px; /* Максимальная ширина родительского блока */
-      
+            max-width: 500px;
         }
- 
+
         .child-block {
-           width: 180px; /* Установите ширину блока по вашему усмотрению */
-           height: 180px;
-           margin: 20px; /* Регулируйте отступы по вашему усмотрению */
-           background-color: rgb(253, 217, 10);
-           backdrop-filter: blur(8px); /* Размытие в пикселях */
+            width: 180px;
+            height: 180px;
+            margin: 20px;
+            background-color: rgb(253, 217, 10);
+            backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            border-radius:30px;
+            border-radius: 30px;
         }
 
         footer {
@@ -128,12 +156,27 @@
             object-fit: cover;
             z-index: -1;
         }
+
+        .fade-in,
+        .fadeinonload {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 3s ease, transform 3s ease;
+        }
+
+        .fade-in.show,
+        .fadeinonload.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 
     <!-- Скрипт для прокрутки к следующей секции -->
     <script src="js/Next.js"></script>
     <script src="js/Headerbtn.js"></script>
     <script src="js/debug.js"></script>
+    <script src="js/fadein.js"></script>
+    <script src="js/fadeinonload.js"></script>
 </head>
 
 <body>
@@ -142,10 +185,10 @@
     <header>
         <!-- Дополнительное содержимое хедера, такое как навигация, может быть добавлено здесь -->
         <nav>
-            <button id="home-btn" class="home-btn" next-section="home">HOME</button>
-            <button id="portfolio-btn" class="portfolio-btn" next-section="portfolio">PORTFOLIO</button>
-            <button id="about-btn" class="about-btn" next-section="about">ABOUT</button>
-            <button id="contacts-btn" class="contacts-btn" next-section="contacts">CONTACTS</button>
+            <button id="home-btn" class="nav-btn fadeinonload" next-section="home">HOME</button>
+            <button id="portfolio-btn" class="nav-btn fadeinonload" next-section="portfolio">PORTFOLIO</button>
+            <button id="about-btn" class="nav-btn fadeinonload" next-section="about">ABOUT</button>
+            <button id="contacts-btn" class="nav-btn fadeinonload" next-section="contacts">CONTACTS</button>
         </nav>
     </header>
 
@@ -158,23 +201,23 @@
                 <source src="content/VideoLo.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-            <button class="next-btn" data-next-section="portfolio">Next</button>
+            <button class="next-btn fadeinonload" data-next-section="portfolio">&#9660;</button>
         </section>
 
         <!-- Раздел 2 -->
         <section id="portfolio">
             <div class="parent-container">
-                <div class="child-block"></div>
-                <div class="child-block"></div>
-                <div class="child-block"></div>
-                <div class="child-block"></div>
-              </div>
-            <button class="next-btn" data-next-section="about">Next</button>
+                <div class="child-block fade-in"></div>
+                <div class="child-block fade-in"></div>
+                <div class="child-block fade-in"></div>
+                <div class="child-block fade-in"></div>
+            </div>
+            <button class="next-btn" data-next-section="about">&#9660;</button>
         </section>
 
         <!-- Раздел 3 -->
         <section id="about">
-            <button class="next-btn" data-next-section="contacts">Next</button>
+            <button class="next-btn" data-next-section="contacts">&#9660;</button>
         </section>
 
         <!-- Раздел 4 -->
@@ -183,7 +226,6 @@
             <!-- Дополнительное содержимое футера, такое как ссылки или копирайт, может быть добавлено здесь -->
         </section>
     </main>
-
 </body>
 
 </html>

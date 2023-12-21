@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading Page</title>
+  <style>
+
+.fadeinonload {
+      opacity: 0;
+      transition: opacity 1.2s ease, transform 1.2s ease;
+    }
+
+    /* Показываем элементы с анимацией при прокрутке */
+    .fadeinonload.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    video {
+      object-fit: cover;
+      width: 100vw;
+      height: 100vh;
+    }
+    
+  </style>
+</head>
+<body>
+  <video class="fadeinonload" autoplay muted loop>
+    <source src="content/loading.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+
+  <script>
+    // Добавляем таймаут в миллисекундах (например, 5000 мс = 5 секунд)
+    var timeoutDuration = 3700;
+
+    // После завершения загрузки и истечения таймаута
+    window.onload = function() {
+      setTimeout(function() {
+        // Перенаправление на основную страницу
+        window.location.href = 'main.html';
+      }, timeoutDuration);
+    };
+  </script>
+<script src="js/fadeinonload.js"></script>
+
+</body>
+
+
+
+</html>
