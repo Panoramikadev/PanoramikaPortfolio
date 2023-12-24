@@ -5,171 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Website</title>
+    <link rel="stylesheet" href="css/styles.css">
 
     <!-- Подключение шрифта с использованием @font-face -->
-    <style>
-        @font-face {
-            font-family: 'Roboto Condensed';
-            font-style: normal;
-            font-weight: 100;
-            src: local('Roboto Condensed Thin'), local('RobotoCondensed-Thin'), url('./content/RobotoCondensed-Thin.ttf') format('truetype');
-        }
-
-        body {
-            font-family: 'Roboto Condensed', sans-serif;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-        }
-
-        header {
-            background-color: rgba(184, 182, 38, 0.110);
-            color: white;
-            padding: 35px;
-            width: 100%;
-            position: fixed;
-            text-align: center;
-            z-index: 1;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            box-shadow: 0px 5px 10px rgba(184, 182, 38, 0.072);
-        }
-
-        header button {
-            font-family: 'Roboto Condensed', sans-serif; /* Добавили inline стиль */
-            color: rgb(253, 217, 10);
-            background-color: rgba(184, 182, 38, 0.877);
-            margin: 0 50px 0 0;
-            background-color: transparent;
-            border: none;
-            font-size: 15px;
-            transition: color 1s ease, background-color 1s ease;
-            border-radius: 10px;
-        }
-
-        header button:hover {
-            font-weight: bold;
-            color: rgb(253, 217, 10);
-            background-color: rgba(184, 182, 38, 0.158);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(8px);
-            box-shadow: 0 0 25px rgba(184, 182, 38, 0.89);
-            border: 0px solid rgba(184, 182, 38, 0.8);
-            transform: scale(1.2);
-            transition: color 0.5s ease, background-color 0.5s ease;
-        }
-
-        main {
-            padding: 0px;
-        }
-
-        section {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #portfolio,
-        #about {
-            background-color: #000000;
-            color: white;
-        }
-
-        #contacts {
-            background-color: rgb(253, 217, 10);
-            color: white;
-            height: auto;
-        }
-
-        .nav-btn {
-            font-family: 'Roboto Condensed', sans-serif; /* Добавили inline стиль */
-            color: rgb(253, 217, 10);
-            background-color: rgba(184, 182, 38, 0.877);
-            margin: 0 50px 0 0;
-            background-color: transparent;
-            border: none;
-            font-size: 15px;
-            transition: color 1s ease, background-color 1s ease;
-            border-radius: 10px;
-        }
-
-        .nav-btn:hover {
-            color: rgb(253, 217, 10);
-            background-color: rgba(184, 182, 38, 0.158);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(8px);
-            box-shadow: 0 0 25px rgba(184, 182, 38, 0.89);
-            border: 0px solid rgba(184, 182, 38, 0.8);
-            transform: scale(1.2);
-            transition: color 0.5s ease, background-color 0.5s ease;
-        }
-
-        .next-btn {
-            background-color: transparent;
-            margin-top: auto;
-            color: rgba(253, 217, 10, 0.623);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: none;
-            font-size: 20px;
-            cursor: pointer;
-            margin-bottom: 40px;
-        }
-
-        .parent-container {
-            margin-right: 1100px;
-            margin-top: 255px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            max-width: 500px;
-        }
-
-        .child-block {
-            width: 180px;
-            height: 180px;
-            margin: 20px;
-            background-color: rgb(253, 217, 10);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border-radius: 30px;
-        }
-
-        footer {
-            background-color: #dbd80d;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            bottom: 0;
-            width: 100%;
-        }
-
-        video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
-
-        .fade-in,
-        .fadeinonload {
-            opacity: 0;
-            transform: translateY(35px);
-            transition: opacity 3s ease, transform 3s ease;
-        }
-
-        .fade-in.show,
-        .fadeinonload.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+    <style></style>
 
     <!-- Скрипт для прокрутки к следующей секции -->
     <script src="js/Next.js"></script>
@@ -177,18 +16,21 @@
     <script src="js/debug.js"></script>
     <script src="js/fadein.js"></script>
     <script src="js/fadeinonload.js"></script>
+    <script src="js/Prev.js"></script>
+    <script src="js/floatingback.js"></script>
 </head>
 
 <body>
+    <div  class="floating-btn" onclick="scrollToTop()">↑</div>
 
     <!-- Хедер -->
     <header>
         <!-- Дополнительное содержимое хедера, такое как навигация, может быть добавлено здесь -->
         <nav>
-            <button id="home-btn" class="nav-btn fadeinonload" next-section="home">HOME</button>
-            <button id="portfolio-btn" class="nav-btn fadeinonload" next-section="portfolio">PORTFOLIO</button>
-            <button id="about-btn" class="nav-btn fadeinonload" next-section="about">ABOUT</button>
-            <button id="contacts-btn" class="nav-btn fadeinonload" next-section="contacts">CONTACTS</button>
+            <button class="nav-btn fadeinonload" onclick="scrollToSection('home')">HOME</button>
+            <button class="nav-btn fadeinonload" onclick="scrollToSection('portfolio')">PORTFOLIO</button>
+            <button class="nav-btn fadeinonload" onclick="scrollToSection('about')">ABOUT</button>
+            <button class="nav-btn fadeinonload" onclick="scrollToSection('contacts')">CONTACTS</button>
         </nav>
     </header>
 
@@ -206,24 +48,30 @@
 
         <!-- Раздел 2 -->
         <section id="portfolio">
+           
             <div class="parent-container">
                 <div class="child-block fade-in"></div>
                 <div class="child-block fade-in"></div>
                 <div class="child-block fade-in"></div>
                 <div class="child-block fade-in"></div>
             </div>
+            
             <button class="next-btn" data-next-section="about">&#9660;</button>
+            
         </section>
 
         <!-- Раздел 3 -->
         <section id="about">
-            <button class="next-btn" data-next-section="contacts">&#9660;</button>
+           
+            
+            
         </section>
 
         <!-- Раздел 4 -->
-        <section id="contacts">
+        <section class="contacts">
             <p>&copy; 2023 Your Website</p>
             <!-- Дополнительное содержимое футера, такое как ссылки или копирайт, может быть добавлено здесь -->
+            
         </section>
     </main>
 </body>

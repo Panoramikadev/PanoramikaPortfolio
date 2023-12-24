@@ -1,0 +1,230 @@
+@font-face {
+    font-family: 'Raleway', sans-serif;
+    font-style: normal;
+    font-weight: 100;
+    src: url('/content/Raleway-Light.ttf') format('truetype');
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    
+}
+
+header {
+    background-color: rgba(184, 182, 38, 0.110);
+    color: white;
+    padding: 35px;
+    width: 100%;
+    position: fixed;
+    text-align: center;
+    z-index: 1;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0px 5px 10px rgba(184, 182, 38, 0.072);
+}
+
+header button {
+    font-family: 'Roboto Condensed', sans-serif; /* Добавили inline стиль */
+    color: rgb(255, 209, 3);
+    background-color: rgba(184, 182, 38, 0.877);
+    margin: 0 50px 0 0;
+    background-color: transparent;
+    border: none;
+    font-size: 15px;
+    transition: color 1s ease, background-color 1s ease;
+    border-radius: 10px;
+}
+
+header button:hover {
+    font-weight: bold;
+    color: rgb(255, 209, 3);
+    background-color: rgba(184, 182, 38, 0.158);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 0 25px rgba(184, 182, 38, 0.89);
+    border: 0px solid rgba(184, 182, 38, 0.8);
+    transform: scale(1.2);
+    transition: color 0.5s ease, background-color 0.5s ease;
+}
+
+
+
+section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+#portfolio {
+
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    background-color: #000000;
+    color: white;
+   
+           
+            
+}
+
+#about {
+            background-color: #000000;
+            color: white;
+            
+        }
+
+        #contacts {
+            background-color: rgb(255, 209, 3);
+            color: white;
+            height: auto;
+        }
+
+        .nav-btn {
+            font-family: 'Roboto Condensed', sans-serif; /* Добавили inline стиль */
+            color: rgb(255, 209, 3);
+            background-color: rgba(184, 182, 38, 0.877);
+            margin: 0 50px 0 0;
+            background-color: transparent;
+            border: none;
+            font-size: 15px;
+            transition: color 1s ease, background-color 1s ease;
+            border-radius: 10px;
+        }
+
+        .nav-btn:hover {
+            color: rgb(255, 209, 3);
+            background-color: rgba(184, 182, 38, 0.158);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow: 0 0 25px rgba(184, 182, 38, 0.89);
+            border: 0px solid rgba(184, 182, 38, 0.8);
+            transform: scale(1.2);
+            transition: color 0.5s ease, background-color 0.5s ease;
+        }
+
+        .next-btn {
+            height: auto;
+            width:auto;
+            background-color: transparent;
+            margin-top: auto;
+            color: rgba(253, 217, 10, 0.623);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            margin-bottom: 40px;
+        }
+
+        .prev-btn {
+            height: auto;
+            width:auto;
+            background-color: transparent;
+            margin-top: 125px; /* Задайте отступ сверху, который вам нужен */
+            color: rgba(253, 217, 10, 0.623);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            margin-bottom: 30px;
+        }
+            
+        
+
+        .parent-container {
+
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Два столбца с равной шириной */
+            grid-template-rows: repeat(2, 1fr);    /* Два ряда с равной высотой */
+            gap: 10px;   
+            margin-top: 280px;
+            margin-left: 150px;
+            height: 500px;
+            width: 500px;
+        }
+
+      
+        .child-block {
+            width: 230px;
+            height: 230px;
+            background-color: rgb(255, 209, 3);
+            border-radius: 100%;
+            padding: 0px;
+
+        }
+
+       .contacts {
+            background-color:rgb(255, 209, 3);
+            color: rgb(0, 0, 0);
+            text-align: center;
+            padding: 10px;
+            bottom: 0;
+            height: 200px;
+            width: 100%;
+        }
+
+        
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .fade-in,
+        .fadeinonload {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 3s ease, transform 3s ease;
+        }
+
+        .fade-in.show,
+        .fadeinonload.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .floating-btn {
+            
+            text-align: center;
+            height: 40px;
+            width: 40px;
+            line-height: 40px; /* Добавьте line-height для вертикального центрирования текста */
+            display: none;
+            z-index: 999;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            color: rgb(255, 209, 3);
+            border: none;
+            border-radius: 50%;
+            font-size: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+
+        }
+        /* Hover effect */
+        .floating-btn:hover {
+            background-color: rgb(255, 209, 3);
+            color: #000000;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow: 0 0 25px rgba(184, 182, 38, 0.89);
+            border: 0px solid rgba(184, 182, 38, 0.8);
+            transform: scale(1.2);
+            transition: color 0.5s ease;
+        }
+
+     
+       
+
+        
