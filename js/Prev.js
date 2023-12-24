@@ -6,11 +6,4 @@ document.addEventListener('DOMContentLoaded', function () {
             scrollToPrevSection(button.getAttribute('data-prev-section'));
         });
     });
-
-    function scrollToPrevSection(sectionId) {
-        const prevSection = document.getElementById(sectionId);
-        if (prevSection) {
-            prevSection.scrollIntoView({ behavior: 'smooth' });
-        }
-    }
 });

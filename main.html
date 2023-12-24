@@ -21,59 +21,73 @@
 </head>
 
 <body>
-    <div  class="floating-btn" onclick="scrollToTop()">↑</div>
+    <div class="floating-btn" onclick="scrollToTop()">↑</div>
 
     <!-- Хедер -->
     <header>
-        <!-- Дополнительное содержимое хедера, такое как навигация, может быть добавлено здесь -->
+        <!-- Навигация -->
         <nav>
             <button class="nav-btn fadeinonload" onclick="scrollToSection('home')">HOME</button>
             <button class="nav-btn fadeinonload" onclick="scrollToSection('portfolio')">PORTFOLIO</button>
             <button class="nav-btn fadeinonload" onclick="scrollToSection('about')">ABOUT</button>
-            <button class="nav-btn fadeinonload" onclick="scrollToSection('contacts')">CONTACTS</button>
+            <button class="nav-btn fadeinonload" onclick="scrollToSection('footer')">CONTACTS</button>
         </nav>
     </header>
 
     <!-- Основная часть страницы -->
     <main>
-
-        <!-- Дополнительное содержимое основной части страницы -->
+        <!-- Секции страницы -->
         <section id="home">
             <video autoplay muted loop>
                 <source src="content/VideoLo.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-            <button class="next-btn fadeinonload" data-next-section="portfolio">&#9660;</button>
+            <button class="next-btn fadeinonload" data-next-section="portfolio">↓</button>
         </section>
 
-        <!-- Раздел 2 -->
         <section id="portfolio">
-           
             <div class="parent-container">
                 <div class="child-block fade-in"></div>
                 <div class="child-block fade-in"></div>
                 <div class="child-block fade-in"></div>
                 <div class="child-block fade-in"></div>
             </div>
-            
-            <button class="next-btn" data-next-section="about">&#9660;</button>
-            
+            <button class="next-btn" data-next-section="about">↓</button>
         </section>
 
-        <!-- Раздел 3 -->
         <section id="about">
-           
-            
-            
+            <div class="employee-container">
+                <div class="employee fade-in"></div>
+                <div class="employee fade-in"></div>
+                <div class="employee fade-in"></div>
+                <div class="employee fade-in"></div>
+            </div>
         </section>
 
-        <!-- Раздел 4 -->
-        <section class="contacts">
-            <p>&copy; 2023 Your Website</p>
-            <!-- Дополнительное содержимое футера, такое как ссылки или копирайт, может быть добавлено здесь -->
-            
-        </section>
+        <!-- Дополнительные разделы страницы -->
+
     </main>
+
+    <!-- Футер -->
+    <footer id="footer">
+        <!-- Содержимое вашего футера, например, контактная информация -->
+       <div class="socialblock">
+        <button class="socialbtn">
+            <img src="content/yt.png" alt="Icon">
+        </button>
+        <button class="socialbtn">
+            <img src="content/insta.png" alt="Icon">
+        </button>
+        <button class="socialbtn">
+            <img  src="content/telegr.png" alt="Icon">
+        </button>
+       </div>
+    </footer>
+
+    <!-- Скрипты -->
+    <script src="js/Next.js"></script>
+    <!-- Остальные скрипты -->
+
 </body>
 
 </html>

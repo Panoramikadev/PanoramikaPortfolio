@@ -15,7 +15,7 @@ body {
 
 header {
     background-color: rgba(184, 182, 38, 0.110);
-    color: white;
+    color: rgb(255, 209, 3);
     padding: 35px;
     width: 100%;
     position: fixed;
@@ -64,7 +64,7 @@ section {
     display: flex;
     width: 100%;
     height: 100vh;
-    background-color: #000000;
+    background-color: #0f0f0f;
     color: white;
    
            
@@ -72,10 +72,14 @@ section {
 }
 
 #about {
-            background-color: #000000;
-            color: white;
-            
-        }
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Теперь выравниваем по центру */
+    min-height: 100vh;
+    background-color: #000000;
+    color: white;
+  }
 
         #contacts {
             background-color: rgb(255, 209, 3);
@@ -84,7 +88,6 @@ section {
         }
 
         .nav-btn {
-            font-family: 'Roboto Condensed', sans-serif; /* Добавили inline стиль */
             color: rgb(255, 209, 3);
             background-color: rgba(184, 182, 38, 0.877);
             margin: 0 50px 0 0;
@@ -108,16 +111,37 @@ section {
 
         .next-btn {
             height: auto;
-            width:auto;
+            width: auto;
             background-color: transparent;
             margin-top: auto;
-            color: rgba(253, 217, 10, 0.623);
+            color: rgba(255, 209, 3, 0.808);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             border: none;
-            font-size: 20px;
+            font-size: 25px;
             cursor: pointer;
             margin-bottom: 40px;
+            animation: pulse 1s infinite; /* Используйте анимацию "pulse" длительностью 2 секунды и бесконечной повторяемости */
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                color: rgba(255, 209, 3, 0.637);
+          
+            }
+            100% {
+                transform: scale(1.2);
+                color: rgba(255, 209, 3, 0.808);
+                
+            }
+
+            
+        }
+
+        .next-btn:hover {
+            transform: scale(1.1);
+       
         }
 
         .prev-btn {
@@ -158,16 +182,6 @@ section {
 
         }
 
-       .contacts {
-            background-color:rgb(255, 209, 3);
-            color: rgb(0, 0, 0);
-            text-align: center;
-            padding: 10px;
-            bottom: 0;
-            height: 200px;
-            width: 100%;
-        }
-
         
 
         video {
@@ -183,8 +197,7 @@ section {
         .fade-in,
         .fadeinonload {
             opacity: 0;
-            transform: translateY(35px);
-            transition: opacity 3s ease, transform 3s ease;
+            transition: opacity 6s ease, transform 6s ease;
         }
 
         .fade-in.show,
@@ -224,7 +237,62 @@ section {
             transition: color 0.5s ease;
         }
 
+        footer {
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color:rgb(255, 209, 3);
+            color: rgb(0, 0, 0);
+            text-align: center;
+            padding: 10px;
+            bottom: 0;
+            height: 110px;
+            width: 100%;
+        }
+
+        .socialblock{
+            gap: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: auto;
+            height: auto;
+        }
+
+        .socialbtn {
+            background-color: #ffffff;
+            border: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 60px;
+        }
      
+        .socialbtn img {
+            width: 50px;
+            height: auto;
+            border-radius: 10px;
+            filter: hue-rotate(46deg); /* Изменение цвета */
+        }
        
+
+        .employee-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-top: 50px;
+          }
+          
+          .employee {
+            margin-right: 20px;
+            width: 230px;
+            height: 230px;
+            background-color: rgb(255, 209, 3);
+            border-radius: 100%;
+            padding: 0px;
+          }
 
         
