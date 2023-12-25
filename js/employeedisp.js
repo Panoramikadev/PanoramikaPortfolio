@@ -15,11 +15,21 @@ async function fetchEmployees() {
       imgElement.alt = employee.name;
 
       // Создаем заголовок и параграф для имени и должности сотрудника
-      const nameElement = document.createElement('h3');
+      const nameElement = document.createElement('h2');
       nameElement.textContent = employee.name;
+      nameElement.style.marginBottom = '0';
+      nameElement.style.marginTop = '0';
+      nameElement.style.fontSize = '18px';
 
       const positionElement = document.createElement('p');
       positionElement.textContent = employee.position;
+      positionElement.style.marginTop = '7px';
+      positionElement.style.marginBottom = '0';
+      positionElement.style.color = "#383838";
+      positionElement.style.fontWeight = "bold";
+      positionElement.style.fontSize = '15px';
+
+      
 
       // Добавляем элементы в контейнер сотрудников
       employeeElement.appendChild(imgElement);
