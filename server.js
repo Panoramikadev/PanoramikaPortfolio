@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const sqlite3 = require('sqlite3');
+const multer = require('multer');
+const path = require('path');
 
 const app = express();
 const port = 3000;
@@ -12,7 +14,7 @@ db.serialize(() => {
   db.run(`
     CREATE TABLE IF NOT EXISTS employees (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
-      image TEXT,
+      imagePath TEXT,
       position TEXT,
       name TEXT
     )
@@ -25,24 +27,37 @@ app.use(express.json());
 // Включите CORS middleware
 app.use(cors());
 
-// Запрос на получение всех сотрудников
-app.get('/api/employees', (req, res) => {
-  db.all('SELECT * FROM employees', (err, rows) => {
+// Указываем папку для хранения загруженных файлов
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'employees');
+  },
+  filename: (req, file, cb) => {
+    const ext = path.extname(file.originalname);
+    cb(null, `${Date.now()}${ext}`);
+  },
+});
+
+const upload = multer({ storage });
+
+// Замените текущий маршрут для добавления нового сотрудника на использование multer
+app.post('/api/employees', upload.single('image'), (req, res) => {
+  const { position, name } = req.body;
+  const imagePath = req.file ? `employees/${req.file.filename}` : null; // Путь к загруженному файлу
+
+  db.run('INSERT INTO employees (imagePath, position, name) VALUES (?, ?, ?)', [imagePath, position, name], function (err) {
     if (err) {
       console.error(err);
       res.status(500).json({ error: 'Internal Server Error' });
       return;
     }
-    res.json(rows);
+
+    res.json({ success: true, message: 'Employee added successfully' });
   });
 });
 
-// Обработка GET-запроса по корневому пути
-app.get('/', (req, res) => {
-  res.send('Hello, this is the employee app!');
-});
+//...
 
-// Запуск сервера
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
