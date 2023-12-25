@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Admin Panel</title>
+  <script src="js/admin.js"></script>
+</head>
+<body>
+  <h2>Add Employee</h2>
+  <form id="employeeForm">
+    <label for="image">Image URL:</label>
+    <input type="text" id="image" name="image" required><br>
+
+    <label for="position">Position:</label>
+    <input type="text" id="position" name="position" required><br>
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br>
+
+    <button type="button" onclick="addEmployee()">Add Employee</button>
+  </form>
+
+  <h2>Employee List</h2>
+  <ul id="employeeListAdmin"></ul>
+
+
+</body>
+</html>
