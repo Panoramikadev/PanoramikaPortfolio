@@ -14,7 +14,7 @@ db.serialize(() => {
   db.run(`
     CREATE TABLE IF NOT EXISTS employees (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
-      imagePath TEXT,
+      image TEXT,
       position TEXT,
       name TEXT
     )
@@ -43,9 +43,9 @@ const upload = multer({ storage });
 // Замените текущий маршрут для добавления нового сотрудника на использование multer
 app.post('/api/employees', upload.single('image'), (req, res) => {
   const { position, name } = req.body;
-  const imagePath = req.file ? `employees/${req.file.filename}` : null; // Путь к загруженному файлу
+  const imagePath = req.file.path; // Путь к загруженному файлу
 
-  db.run('INSERT INTO employees (imagePath, position, name) VALUES (?, ?, ?)', [imagePath, position, name], function (err) {
+  db.run('INSERT INTO employees (image, position, name) VALUES (?, ?, ?)', [imagePath, position, name], function (err) {
     if (err) {
       console.error(err);
       res.status(500).json({ error: 'Internal Server Error' });
@@ -56,7 +56,19 @@ app.post('/api/employees', upload.single('image'), (req, res) => {
   });
 });
 
-//...
+// Запрос на получение всех сотрудников
+app.get('/api/employees', (req, res) => {
+  db.all('SELECT * FROM employees', (err, rows) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Internal Server Error' });
+      return;
+    }
+    res.json(rows);
+  });
+});
+
+// Другие обработчики маршрутов...
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
