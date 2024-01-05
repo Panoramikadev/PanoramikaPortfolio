@@ -1,0 +1,60 @@
+/* admin_styles.css */
+
+body {
+    background-color: #282c34;
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  
+  h2 {
+    color: #61dafb;
+  }
+  
+  form {
+    max-width: 400px;
+    width: 100%;
+    margin: auto;
+  }
+  
+  label {
+    display: block;
+    margin-top: 10px;
+    color: #61dafb;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    background-color: #444;
+    color: #fff;
+    border: 1px solid #61dafb;
+  }
+  
+  button {
+    background-color: #61dafb;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #4fa3d1;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  /* Add more styles as needed */
