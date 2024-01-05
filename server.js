@@ -7,7 +7,7 @@ const path = require('path');
 const app = express();
 const port = 3000;
 
-// Подключение к базе данных SQLite и создание таблицы
+// Подключение к базе данных SQLite и создание таблицы для сотрудников
 const db = new sqlite3.Database('employees.db');
 
 db.serialize(() => {
@@ -17,6 +17,18 @@ db.serialize(() => {
       image TEXT,
       position TEXT,
       name TEXT
+    )
+  `);
+});
+
+// Подключение к базе данных SQLite и создание таблицы для видео
+const dbVideos = new sqlite3.Database('videos.db');
+
+dbVideos.serialize(() => {
+  dbVideos.run(`
+    CREATE TABLE IF NOT EXISTS videos (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      video_link TEXT
     )
   `);
 });
@@ -40,7 +52,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-// Замените текущий маршрут для добавления нового сотрудника на использование multer
+// Маршрут для добавления нового сотрудника
 app.post('/api/employees', upload.single('image'), (req, res) => {
   const { position, name } = req.body;
   const imagePath = req.file.path; // Путь к загруженному файлу
@@ -68,45 +80,7 @@ app.get('/api/employees', (req, res) => {
   });
 });
 
-// Другие обработчики маршрутов...
-
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
-
-//LOGS
-app.post('/api/employees', (req, res) => {
-  const { image, position, name } = req.body;
-
-  console.log('Received POST request with data:', { image, position, name });
-
-  db.run('INSERT INTO employees (image, position, name) VALUES (?, ?, ?)', [image, position, name], function (err) {
-    if (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Internal Server Error' });
-      return;
-    }
-
-    res.json({ success: true, message: 'Employee added successfully' });
-  });
-});
-
-// Маршрут для очистки всей таблицы сотрудников
-// curl -X DELETE http://localhost:3000/api/employees/clear
-app.delete('/api/employees/clear', (req, res) => {
-  db.run('DELETE FROM employees', function (err) {
-    if (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Internal Server Error' });
-      return;
-    }
-
-    res.json({ success: true, message: 'All employees deleted successfully' });
-  });
-});
-
 // Маршрут для удаления сотрудника по ID
-// curl -X DELETE http://localhost:3000/api/employees/1
 app.delete('/api/employees/:id', (req, res) => {
   const idToDelete = req.params.id;
 
@@ -125,17 +99,52 @@ app.delete('/api/employees/:id', (req, res) => {
   });
 });
 
-// Маршрут для добавления нового сотрудника
-app.post('/api/employees', (req, res) => {
-  const { image, position, name } = req.body;
+// Маршрут для добавления нового видео
+app.post('/api/videos', (req, res) => {
+  const { video_link } = req.body;
 
-  db.run('INSERT INTO employees (image, position, name) VALUES (?, ?, ?)', [image, position, name], function (err) {
+  dbVideos.run('INSERT INTO videos (video_link) VALUES (?)', [video_link], function (err) {
     if (err) {
       console.error(err);
       res.status(500).json({ error: 'Internal Server Error' });
       return;
     }
 
-    res.json({ success: true, message: 'Employee added successfully' });
+    res.json({ success: true, message: 'Video added successfully' });
   });
+});
+
+// Маршрут для получения списка видео
+app.get('/api/videos', (req, res) => {
+  dbVideos.all('SELECT * FROM videos', (err, rows) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Internal Server Error' });
+      return;
+    }
+    res.json(rows);
+  });
+});
+
+// Маршрут для удаления видео по ID
+app.delete('/api/videos/:id', (req, res) => {
+  const idToDelete = req.params.id;
+
+  dbVideos.run('DELETE FROM videos WHERE id = ?', [idToDelete], function (err) {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Internal Server Error' });
+      return;
+    }
+
+    if (this.changes > 0) {
+      res.json({ success: true, message: 'Video deleted successfully' });
+    } else {
+      res.status(404).json({ success: false, message: 'Video not found' });
+    }
+  });
+});
+
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
 });

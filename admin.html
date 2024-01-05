@@ -1,3 +1,5 @@
+<!-- admin.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +27,23 @@
   <h2>Employee List</h2>
   <ul id="employeeListAdmin"></ul>
 
+
+  <div class="admin-section" id="videoAdminSection">
+    <h2>Add YouTube Video</h2>
+    <form id="videoForm">
+      <label for="video_link">YouTube Video Link:</label>
+      <input type="text" id="video_link" name="video_link" required><br>
   
+      <button type="button" onclick="addVideo()">Add Video</button>
+    </form>
+  
+    <h2>Video List</h2>
+    <ul id="videoListAdmin"></ul>
+  </div>
+
+  <!-- Добавляем контейнер для видео и кнопок удаления -->
+  <div id="videos-container">
+    <!-- Videos will be displayed here -->
+  </div>
 </body>
 </html>
