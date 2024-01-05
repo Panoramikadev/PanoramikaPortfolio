@@ -145,6 +145,25 @@ app.delete('/api/videos/:id', (req, res) => {
   });
 });
 
+// Маршрут для отдачи видеофайлов по запросу
+app.get('/api/video/:id', (req, res) => {
+  const videoId = req.params.id;
+
+  dbVideos.get('SELECT video_link FROM videos WHERE id = ?', [videoId], (err, row) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+    if (!row) {
+      return res.status(404).json({ error: 'Video not found' });
+    }
+
+    const videoUrl = row.video_link;
+    res.status(200).send({ video_link: videoUrl });
+  });
+});
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });

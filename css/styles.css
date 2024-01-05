@@ -160,28 +160,7 @@ section {
             
         
 
-        .parent-container {
-
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); /* Два столбца с равной шириной */
-            grid-template-rows: repeat(2, 1fr);    /* Два ряда с равной высотой */
-            gap: 10px;   
-            margin-top: 280px;
-            margin-left: 150px;
-            height: 500px;
-            width: 500px;
-        }
-
-      
-        .child-block {
-            width: 230px;
-            height: 230px;
-            background-color: rgb(255, 209, 3);
-            border-radius: 100%;
-            padding: 0px;
-
-        }
-
+       
         
 
         video {
@@ -310,8 +289,4 @@ section {
             max-height: 200px;
             
           }
-
-
-
-         
           

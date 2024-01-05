@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Подключаем jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <title>Your Website</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/portfoliovideo.css">
 
     <!-- Подключение шрифта с использованием @font-face -->
     <style></style>
@@ -18,9 +20,10 @@
     <script src="js/fadeinonload.js"></script>
     <script src="js/Prev.js"></script>
     <script src="js/floatingback.js"></script>
-  
-</head>
 
+    <!-- Скрипт для инициализации Slick Slider и Swiper -->
+    <script src="js/portfoliovideo.js"></script>
+</head>
 <body>
     <div class="floating-btn" onclick="scrollToTop()">↑</div>
 
@@ -47,7 +50,7 @@
         </section>
 
         <section id="portfolio">
-           
+            <div id="videoList"></div>
         </section>
 
         <section id="about">
@@ -80,6 +83,6 @@
     <script src="js/Next.js"></script>
     <!-- Остальные скрипты -->
     <script src="js/employeedisp.js"></script>
+    
 </body>
-
 </html>
