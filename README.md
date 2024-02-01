@@ -130,3 +130,10 @@ DELETE /api/employees/:id: Удаление сотрудника по ID.
 Получение данных с сервера API с использованием fetch.
 Динамическое создание элементов для каждого сотрудника.
 Применение стилей к элементам для красивого отображения.
+
+INSTALL:
+Run from the project derictory
+node server.js - running server file with name "server"
+npm install cors - installing corse
+npm install multer - installing multer for image loading to the server
+npm install express - installing express, serwer working on the Express framework
