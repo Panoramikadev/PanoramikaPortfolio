@@ -132,8 +132,16 @@ DELETE /api/employees/:id: Удаление сотрудника по ID.
 Применение стилей к элементам для красивого отображения.
 
 INSTALL:
+Windows:
 Run from the project derictory
-node server.js - running server file with name "server"
 npm install cors - installing corse
 npm install multer - installing multer for image loading to the server
 npm install express - installing express, serwer working on the Express framework
+node server.js - running server file with name "server"
+
+Steam os:
+sudo pacman-key --init 
+sudo pacman-key --populate archlinux holo
+sudo pacman -S nodejs
+sudo pacman -S nodejs npm
+npm init -y
